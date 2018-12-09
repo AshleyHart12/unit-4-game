@@ -1,0 +1,37 @@
+body {
+    background-color: lightcyan;
+}
+
+.container-fluid {
+    margin: 0 auto;
+    /* border: solid; */
+    width: 960px;
+    float: middle;
+
+}
+
+#header {
+    background-color: aqua;
+    text-align: center;
+}
+
+#instructions {
+    text-align: center;
+    padding: 20px;
+    line-height: 15px;
+    
+}
+
+  #scorecount {
+    border: solid 1px;
+    margin-top: 60px;
+    
+}
+
+#imageline, #scorecount {
+    padding: 16px;
+}
+
+#randomNumber {
+    padding-bottom: 10px;
+}
