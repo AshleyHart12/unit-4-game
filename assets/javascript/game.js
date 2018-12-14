@@ -1,6 +1,7 @@
 // Have player press any key to begin (did not work....)
 $(document).ready(function() {
 
+    
         // VARIABLES DEFINED
         // computer number must be between 19-120
     var computerNumber = [] 
@@ -15,23 +16,16 @@ $(document).ready(function() {
 
     // computer picks random number 19-120
     randomNumber = computerNumber [Math.floor(Math.random() * computerNumber.length)]; 
+    console.log(randomNumber);
 
     redcrystal = 0;
     bluecrystal = 0;
     yellowcrystal = 0;
     greencrystal = 0;
 
-
-
-
-    // Supposed to press key to begin
-    // document.onkeyup = function startGame() {
-    randomNumber = computerNumber [Math.floor(Math.random() * computerNumber.length)];  // computer puts random number on board
-    console.log(randomNumber); //SUCCESS!
-
-                
+          
     // Start of the game - 
-    roundStart = function() {
+    // roundStart = function() {
         
         bluecrystal = 
         Math.floor(Math.random() * 12) + 1;
@@ -41,67 +35,100 @@ $(document).ready(function() {
         Math.floor(Math.random() * 12) + 1;
         yellowcrystal = 
         Math.floor(Math.random() * 12) + 1;
-    } ;
+    // };
+
+    function reset() {
+        console.log('resetting')
+        computerNumber = Math.floor(Math.random() * 120-19 +1);
+        $("computerNumber").text(computerNumber);
+        userScore = 0;
+        $("currentScore").text(0);
+    }
                         
                 
-    roundStart();
+    // roundStart();
         
+		// function congrats () {
+		// 	alert("Congrats, smarty pants! You win!");
+		// 	wins++;
+		// 	$("#wins").append(wins);
+		// 	reset();
+		// }
 
+		// function wompwomp() {
+		// 	alert("Sorry, dude. You lose.");
+		// 	losses++;
+		// 	$("#losses").append(losses);
+		// 	reset();
+		// }
         
+        function scoreCheck (){
+            console.log("Checking score")
+            if (userScore === computerNumber) {
+                wins++;
+                $("#wins").append(wins);
+                reset();
+                alert("Congrats, smarty pants! You win!");
+            }
+            else if (userScore > computerNumber) {
+                losses++;
+                $("#losses").append(losses);
+			    reset();
+                alert("Sorry, dude. You lose.");
+                
+        }
+        };
+
     console.log(redcrystal, bluecrystal, yellowcrystal, greencrystal); // SUCCESS
                     
     // end Start Game Function
     
-    $("#computerNumber").append(randomNumber); // keeps adding the numbers together when pressing a key - need to RESTART everytime and clear previous number
+    $("#computerNumber").append(randomNumber); 
+    $("#currentScore").append(userScore);
 
 
      $("#red").on("click", function() {
-        
         userScore = userScore + redcrystal;
-        $("#currentScore").text(userScore)
-    })
+                $("#currentScore").text(userScore);
+                scoreCheck();
+                                    
+	});
+           
+    
 
     $("#blue").on("click", function() {
         userScore = userScore + bluecrystal;
-        $("#currentScore").text(userScore)
-    })
+                $("#currentScore").text(userScore)
+                scoreCheck();
+    });
 
     $("#green").on("click", function() {
         userScore = userScore + greencrystal;
-        $("#currentScore").text(userScore)
-    })
+                $("#currentScore").text(userScore)
+                
+				if (userScore === computerNumber) {
+					congrats();
+				}
+				else if (userScore > computerNumber) {
+						wompwomp()
+					};
+    });
 
     $("#yellow").on("click", function() {
         userScore = userScore + yellowcrystal;
-         $("#currentScore").text(userScore)
-    })
-                                
-                
-            
-    console.log(userScore); // Shows as 0 - but at least it is showing up now :)
-
-    $("#currentScore").append(userScore);
-
-    // How to Win - User Guesses must equal Current number to Match
-
-    if (userScore > computerNumber) {
-        alert("Sorry, try again!");
-        losses = losses +1
-        $("#losses").text(losses);
-        roundStart();
-        console.log(losses);
-    }
-    if (userScore === computerNumber) {
-        alert("You did it, great job! ");
-        wins = wins +1;
-        $("#wins").text(wins);
-        roundStart();
-        console.log(wins);
-
-
-    }
-}); // Closing of On Ready
-    // });
+                 $("#currentScore").text(userScore)
+                 
+				 if (userScore === computerNumber) {
+					congrats();
+				}
+				else if (userScore > computerNumber) {
+						wompwomp()
+					}
+    });
+});                             
+    
+ 
+    
     
         
 
