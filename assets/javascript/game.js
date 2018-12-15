@@ -15,7 +15,7 @@ $(document).ready(function() {
     losses = 0;
 
     // computer picks random number 19-120
-    randomNumber = computerNumber [Math.floor(Math.random() * computerNumber.length)]; 
+    randomNumber = computerNumber[Math.floor(Math.random() * computerNumber.length)]; 
     console.log(randomNumber);
 
     redcrystal = 0;
@@ -64,13 +64,17 @@ $(document).ready(function() {
         
         function scoreCheck (){
             console.log("Checking score")
-            if (userScore === computerNumber) {
+            console.log(randomNumber);
+            console.log("userScore: " + userScore);
+            if (userScore === randomNumber) {
+                console.log("you won!");
                 wins++;
                 $("#wins").append(wins);
                 reset();
                 alert("Congrats, smarty pants! You win!");
             }
-            else if (userScore > computerNumber) {
+            else if (userScore > randomNumber) {
+                console.log("Lose");
                 losses++;
                 $("#losses").append(losses);
 			    reset();
@@ -103,27 +107,16 @@ $(document).ready(function() {
     });
 
     $("#green").on("click", function() {
-        userScore = userScore + greencrystal;
+        userScore = userScore + bluecrystal;
                 $("#currentScore").text(userScore)
-                
-				if (userScore === computerNumber) {
-					congrats();
-				}
-				else if (userScore > computerNumber) {
-						wompwomp()
-					};
+                scoreCheck();
     });
 
     $("#yellow").on("click", function() {
         userScore = userScore + yellowcrystal;
-                 $("#currentScore").text(userScore)
-                 
-				 if (userScore === computerNumber) {
-					congrats();
-				}
-				else if (userScore > computerNumber) {
-						wompwomp()
-					}
+        userScore = userScore + bluecrystal;
+        $("#currentScore").text(userScore)
+        scoreCheck();
     });
 });                             
     
