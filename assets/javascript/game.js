@@ -6,9 +6,9 @@ $(document).ready(function() {
         // computer number must be between 19-120
     var computerNumber = [] 
     for (var i = 12; i <= 120; i++) {
-        computerNumber.push(i)
-        
+        computerNumber.push(i);
     }
+    
 
     userScore =0;
     wins = 0;
@@ -25,7 +25,7 @@ $(document).ready(function() {
 
           
     // Start of the game - 
-    // roundStart = function() {
+    //  roundStart = function() {
         
         bluecrystal = 
         Math.floor(Math.random() * 12) + 1;
@@ -35,32 +35,17 @@ $(document).ready(function() {
         Math.floor(Math.random() * 12) + 1;
         yellowcrystal = 
         Math.floor(Math.random() * 12) + 1;
-    // };
+//  };
 
     function reset() {
         console.log('resetting')
         computerNumber = Math.floor(Math.random() * 120-19 +1);
-        $("computerNumber").text(computerNumber);
+        $("#computerNumber").text("Number to Match: " + computerNumber);
         userScore = 0;
-        $("currentScore").text(0);
+        $("#currentScore").text("Your Current Number: " + 0);
     }
                         
-                
-    // roundStart();
-        
-		// function congrats () {
-		// 	alert("Congrats, smarty pants! You win!");
-		// 	wins++;
-		// 	$("#wins").append(wins);
-		// 	reset();
-		// }
-
-		// function wompwomp() {
-		// 	alert("Sorry, dude. You lose.");
-		// 	losses++;
-		// 	$("#losses").append(losses);
-		// 	reset();
-		// }
+ 
         
         function scoreCheck (){
             console.log("Checking score")
@@ -69,14 +54,14 @@ $(document).ready(function() {
             if (userScore === randomNumber) {
                 console.log("you won!");
                 wins++;
-                $("#wins").append(wins);
+                $("#wins").text("Wins: " + wins);
                 reset();
                 alert("Congrats, smarty pants! You win!");
             }
             else if (userScore > randomNumber) {
                 console.log("Lose");
                 losses++;
-                $("#losses").append(losses);
+                $("#losses").text("Losses: " + losses);
 			    reset();
                 alert("Sorry, dude. You lose.");
                 
@@ -93,7 +78,7 @@ $(document).ready(function() {
 
      $("#red").on("click", function() {
         userScore = userScore + redcrystal;
-                $("#currentScore").text(userScore);
+                $("#currentScore").text("Your Current Score: " + userScore);
                 scoreCheck();
                                     
 	});
@@ -102,20 +87,20 @@ $(document).ready(function() {
 
     $("#blue").on("click", function() {
         userScore = userScore + bluecrystal;
-                $("#currentScore").text(userScore)
+                $("#currentScore").text("Your Current Score: " + userScore)
                 scoreCheck();
     });
 
     $("#green").on("click", function() {
         userScore = userScore + bluecrystal;
-                $("#currentScore").text(userScore)
+                $("#currentScore").text("Your Current Score: " + userScore)
                 scoreCheck();
     });
 
     $("#yellow").on("click", function() {
         userScore = userScore + yellowcrystal;
         userScore = userScore + bluecrystal;
-        $("#currentScore").text(userScore)
+        $("#currentScore").text("Your Current Score: " + userScore)
         scoreCheck();
     });
 });                             
