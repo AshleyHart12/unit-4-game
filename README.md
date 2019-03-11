@@ -13,4 +13,12 @@
 
 
 - The player wins if their total score matches the random number from the beginning of the game.
-- The player loses if their score goes above the random number.
+- The player loses if their score goes above the random number
+
+<br>
+
+**Technologies Used**
+- HTML
+- CSS
+- Javascript
+- jQuery
