@@ -1,6 +1,6 @@
 # unit-4-game - Crystal Collector
 
-**Crystal Collector Game Instructions**
+###Crystal Collector Game Instructions:###
 
 - There will be four crystals displayed as buttons on the page.
 - The player will be shown a random number at the start of the game.
@@ -17,7 +17,7 @@
 
 <br>
 
-**Technologies Used**
+**Technologies Used:**
 - HTML
 - CSS
 - Javascript
