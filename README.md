@@ -17,6 +17,8 @@
 
 <br>
 
+![website image](crystalCollector.png)
+
 **Technologies Used:**
 - HTML
 - CSS
